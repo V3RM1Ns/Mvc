@@ -1,0 +1,20 @@
+﻿@model HomeVm
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>@Model.Student.Name</h1>
+<p>Age: @Model.Student.Age</p>
+<p>Email: @Model.Student.Email</p>
+<p>Address: @Model.Student.Address</p>
+<p>Phone: @Model.Student.PhoneNumber</p>
+
+<h1>Group:</h1>
+<p>@Model.Group.Name</p>
+<p>@Model.Group.Description</p>
+
+
+<p>@ViewBag.Message</p>
+<p>@ViewBag.WelcomeMessage</p>
+<p>@TempData["TempMessage"]</p>

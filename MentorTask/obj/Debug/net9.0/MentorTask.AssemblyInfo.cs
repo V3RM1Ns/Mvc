@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MentorTask")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b58af1ef965f0eab4ded2a9f3e8a0ad43c7a333")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e9750fcd4e1dcd63056a7719fa130dc882aa685c")]
 [assembly: System.Reflection.AssemblyProductAttribute("MentorTask")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MentorTask")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

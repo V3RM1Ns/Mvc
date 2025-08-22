@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="margin:0; padding:0; min-height:100vh; display:flex; flex-direction:column; background:#f4f6f8;">
+    <!-- Navbar -->
+    <nav style="width:100%; background:#2c3e50; color:#fff; padding:0 32px; height:60px; display:flex; align-items:center; justify-content:space-between; position:fixed; top:0; left:0; z-index:1000; box-shadow:0 2px 8px rgba(44,62,80,0.07);">
+        <div style="font-size:1.4rem; font-weight:700; letter-spacing:1px;">CarApp</div>
+        <div>
+            <a href="/home/index" style="color:#fff; text-decoration:none; margin-right:24px; font-size:1rem; font-weight:500; transition:color 0.2s;">Brand</a>
+            <a href="/mymodel/index" style="color:#fff; text-decoration:none; margin-right:24px; font-size:1rem; font-weight:500; transition:color 0.2s;">Models</a>
+            <a href="/car/index" style="color:#fff; text-decoration:none; margin-right:40px; font-size:1rem; font-weight:500; transition:color 0.2s;">Cars</a>
+        </div>
+    </nav>
+    <main style="flex:1; width:100%; max-width:900px; margin:80px auto 40px auto; padding:0 16px; box-sizing:border-box;">
+         @RenderBody()
+    </main>
+    <!-- Footer -->
+    <footer style="width:100%; background:#2c3e50; color:#fff; text-align:center; padding:18px 0; font-size:1rem; letter-spacing:0.5px; position:fixed; left:0; bottom:0; z-index:1000; box-shadow:0 -2px 8px rgba(44,62,80,0.07);">
+        &copy; @DateTime.Now.Year CarApp. All rights reserved.
+    </footer>
+</body>
+</html>

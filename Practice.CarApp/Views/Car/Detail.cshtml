@@ -1,0 +1,258 @@
+﻿@model Car
+
+<style>
+  
+
+    .car-detail-container {
+        max-width: 700px;
+        margin: 80px auto;
+        padding: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        position: relative;
+    }
+
+    .car-detail-container::before {
+        content: '';
+        position: absolute;
+        top: -50px;
+        left: -50px;
+        right: -50px;
+        bottom: -50px;
+        background: radial-gradient(circle at 30% 20%, rgba(218, 165, 32, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 70% 80%, rgba(184, 134, 11, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .car-detail-card {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f172a 100%);
+        border-radius: 24px;
+        box-shadow: 
+            0 32px 64px rgba(0, 0, 0, 0.4),
+            0 16px 32px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        position: relative;
+        border: 1px solid rgba(218, 165, 32, 0.2);
+    }
+
+    .car-detail-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(218, 165, 32, 0.05) 0%, transparent 50%, rgba(184, 134, 11, 0.05) 100%);
+        pointer-events: none;
+    }
+
+    .car-detail-header {
+        background: linear-gradient(135deg, rgba(218, 165, 32, 0.15) 0%, rgba(184, 134, 11, 0.1) 100%);
+        backdrop-filter: blur(20px);
+        padding: 50px 50px 40px;
+        text-align: center;
+        border-bottom: 1px solid rgba(218, 165, 32, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .car-detail-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        animation: shimmer 3s infinite;
+    }
+
+    
+
+    .car-name {
+        color: #fbbf24;
+        font-family: 'Playfair Display', serif;
+        font-size: 3.2rem;
+        font-weight: 700;
+        margin: 0;
+        text-shadow: 
+            0 2px 4px rgba(0, 0, 0, 0.5),
+            0 4px 8px rgba(0, 0, 0, 0.3),
+            0 0 30px rgba(251, 191, 36, 0.3);
+        letter-spacing: -1px;
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .car-detail-body {
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        padding: 50px;
+        position: relative;
+    }
+
+    .detail-grid {
+        display: grid;
+        gap: 28px;
+    }
+
+    .detail-item {
+        background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+        border-radius: 16px;
+        padding: 28px 32px;
+        border: 1px solid rgba(218, 165, 32, 0.15);
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.08),
+            0 4px 16px rgba(0, 0, 0, 0.04),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .detail-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(180deg, #daa520 0%, #b8860b 100%);
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .detail-item::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(135deg, rgba(218, 165, 32, 0.02) 0%, rgba(184, 134, 11, 0.02) 100%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .detail-item:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.12),
+            0 10px 20px rgba(0, 0, 0, 0.08),
+            0 0 0 1px rgba(218, 165, 32, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        border-color: rgba(218, 165, 32, 0.3);
+    }
+
+    .detail-item:hover::before {
+        transform: scaleY(1);
+    }
+
+    .detail-item:hover::after {
+        opacity: 1;
+    }
+
+    .detail-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+        display: block;
+        font-family: 'Inter', sans-serif;
+        position: relative;
+        z-index: 2;
+    }
+
+    .detail-value {
+        font-size: 1.25rem;
+        color: #111827;
+        font-weight: 500;
+        margin: 0;
+        line-height: 1.4;
+        font-family: 'Inter', sans-serif;
+        position: relative;
+        z-index: 2;
+    }
+
+    .price-item::before {
+        background: linear-gradient(180deg, #059669 0%, #047857 100%);
+    }
+
+    .price-value {
+        color: #059669;
+        font-size: 2rem;
+        font-weight: 700;
+        font-family: 'Playfair Display', serif;
+        text-shadow: 0 2px 4px rgba(5, 150, 105, 0.2);
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .id-item::before {
+        background: linear-gradient(180deg, #8b5cf6 0%, #7c3aed 100%);
+    }
+
+    .model-item::before {
+        background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+    }
+
+    .description-item::before {
+        background: linear-gradient(180deg, #06b6d4 0%, #0891b2 100%);
+    }
+
+    .luxury-accent {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: radial-gradient(circle, rgba(218, 165, 32, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+ 
+
+    
+</style>
+
+<div class="car-detail-container">
+    <div class="car-detail-card">
+        <div class="car-detail-header">
+            <h1 class="car-name">@Model.Name</h1>
+            <div class="luxury-accent"></div>
+        </div>
+        <div class="car-detail-body">
+            <div class="detail-grid">
+                <div class="detail-item id-item">
+                    <span class="detail-label">Vehicle ID</span>
+                    <div class="detail-value">@Model.Id</div>
+                </div>
+
+                <div class="detail-item description-item">
+                    <span class="detail-label">Description</span>
+                    <div class="detail-value">@Model.Description</div>
+                </div>
+
+                <div class="detail-item price-item">
+                    <span class="detail-label">Price</span>
+                    <div class="detail-value price-value">@Model.Price.ToString("C0")</div>
+                </div>
+
+                <div class="detail-item model-item">
+                    <span class="detail-label">Model</span>
+                    <div class="detail-value">@(Model.Model?.Name ?? "N/A")</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+﻿@model List<Car>
+
+<div style="max-width: 500px; margin: 40px auto; padding: 32px; background: #f8f9fa; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+    <h1 style="text-align: center; color: #2c3e50; margin-bottom: 28px; font-size: 2.2rem; letter-spacing: 1px;">Cars</h1>
+    <ul style="list-style: none; padding: 0; margin: 0;">
+        @foreach (var item in Model)
+        {
+            <li style="margin-bottom: 18px;">
+                <a asp-action="detail" asp-route-id="@item.Id" style="display: block; padding: 14px 20px; background: #fff; border-radius: 8px; color: #34495e; text-decoration: none; font-size: 1.1rem; box-shadow: 0 1px 4px rgba(44,62,80,0.06); transition: background 0.2s, color 0.2s; font-weight: 500;">
+                    @item.Id - @item.Name
+                </a>
+            </li>
+        }
+    </ul>
+</div>
